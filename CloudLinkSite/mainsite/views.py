@@ -112,9 +112,8 @@ def login(request):
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
 
-def update_ac_details(request):
+def update_ac_details(request, username):
     if request.method == "POST":
-        username = request.POST.get('username')
         firstname = request.POST.get('firstname')
         lastname = request.POST.get('lastname')
         email = request.POST.get('email')
@@ -125,13 +124,19 @@ def update_ac_details(request):
         state = request.POST.get('state')
         zip = request.POST.get('zip')
 
-        try:
-            user = User.objects.get(username=username)
+        user = User.objects.get(username=username)
 
-            user(username=username, email=email, firstname=firstname, lastname=lastname,
-                 address1=address1, address2=address2, city=city, state=state, zip=zip, phone=phone)
-            user.save()
-        except:
-            raise Http404(f"The Username {username} is not available!")
+        user.email = email
+        user.firstname = firstname
+        user.lastname = lastname
+        user.address1 = address1
+        user.address2 = address2
+        user.city = city
+        user.state = state
+        user.zip = zip
+        user.phone = phone
+        user.save()
+        # except:
+        #     raise Http404(f"The Username {username} is not available!")
 
-        return redirect("cloud:account")
+    return HttpResponseRedirect(reverse("cloud:account", args=(username, )))

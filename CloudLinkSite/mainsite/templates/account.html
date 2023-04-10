@@ -193,7 +193,7 @@
                 <div class="card mb-8">
                     <div class="card-header">Account Information</div>
                     <div class="card-body">
-                        <form action="/update/" method="post">
+                        <form action="/update/{{user.username}}/" method="post">
                             {% csrf_token %}
                             <!-- Personal Information -->
                             <h2>Personal Information</h2>
@@ -221,8 +221,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" value="{{ user.email }}"
-                                    disabled>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}">
                             </div>
                             <div>
                                 <label for="address-line-1">Address Line 1</label><br>
