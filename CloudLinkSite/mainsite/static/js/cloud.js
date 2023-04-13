@@ -63,3 +63,4 @@ function validatePage(currentPage) {
             return true;
     }
 }
+

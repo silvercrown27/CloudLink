@@ -85,28 +85,26 @@
                     <a href="/{{user.username}}/billing/" class="nav-item nav-link">Billing</a>
                     <a href="/{{user.username}}/support/" class="nav-item nav-link active">Support</a>
                 </div>
-                <div class="navbar-nav ms-auto py-0">
+                 <div class="navbar-nav ms-auto py-0">
                     <!-- User Profile Icon with Dropdown -->
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" id="userProfileDropdown"
+                   <div class="dropdown">
+                       <a class="dropdown-toggle bg-transparent border-0" type="button" id="userProfileDropdown"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{% static 'img/profile.jpg' %}" alt="User Profile Photo" class="rounded-circle"
-                                width="40" height="40">
+                                width="30" height="30">
                         </a>
-
-
-                        <ul class="dropdown-menu" aria-labelledby="userProfileDropdown">
-                            <li><a class="dropdown-item" href="#">My Files</a></li>
-                            <li><a class="dropdown-item" href="#">Shared with me</a></li>
-                            <li><a class="dropdown-item" href="#">Recent files</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Log out</a></li>
+                       <ul class="dropdown-menu" aria-labelledby="userProfileDropdown" style="left: -110px; color: #fff;" data-bs-trigger="click">
+                            <li><a class="dropdown-item" href="#">Signed in as <br>{{ user.username }}</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Your profile</a></li>
+                            <li><a class="dropdown-item" href="#">Your files</a></li>
+                            <li><a class="dropdown-item" href="#">Your favorites</a></li>
+                            <li><a class="dropdown-item" href="#">Your stars</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
                         </ul>
                     </div>
-
                 </div>
             </div>
         </nav>

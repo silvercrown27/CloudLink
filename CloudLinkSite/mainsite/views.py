@@ -3,6 +3,7 @@ from django.template import loader
 from django.http import Http404
 from django.urls import reverse
 from .models import User
+import hashlib
 # Create your views here.
 
 
@@ -25,10 +26,13 @@ def home_page(request, username):
     try:
         user = User.objects.get(username=username)
         context = {"user": user}
+        request.session["user.id"]
 
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
 
+    except:
+        return redirect("/login/")
     return render(request, 'index.html', context)
 
 def dashboard(request, username):
@@ -95,6 +99,8 @@ def register(request):
         state = request.POST.get('state')
         zip = request.POST.get('zip')
 
+        password = hashlib.sha256(password.encode()).hexdigest()
+
         data = User(username=username, password=password, email=email, firstname=firstname, lastname=lastname,
                     address1=address1, address2=address2, city=city, state=state, zip=zip, phone=phone)
         data.save()
@@ -103,14 +109,20 @@ def register(request):
 def login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
+    print(password)
+    password = hashlib.sha256(password.encode()).hexdigest()
     try:
         user = User.objects.get(username=username)
         if password == user.password:
+            request.session[f'{user.id}'] = user.username
             return HttpResponseRedirect(reverse("cloud:home", args=(user.username, )))
         else:
             return HttpResponse('incorrect Password')
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
+
+def logout(request, id):
+    del request.session[f"{id}"]
 
 def update_ac_details(request, username):
     if request.method == "POST":
