@@ -26,7 +26,6 @@ def home_page(request, username):
     try:
         user = User.objects.get(username=username)
         context = {"user": user}
-        request.session["user.id"]
 
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
@@ -109,7 +108,6 @@ def register(request):
 def login(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
-    print(password)
     password = hashlib.sha256(password.encode()).hexdigest()
     try:
         user = User.objects.get(username=username)
