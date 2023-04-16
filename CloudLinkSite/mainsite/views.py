@@ -25,18 +25,24 @@ def contact_page(request):
 def home_page(request, username):
     try:
         user = User.objects.get(username=username)
+        if 'user_id' not in request.session:
+            return redirect('/signin/')
+
         context = {"user": user}
 
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
 
     except:
-        return redirect("/login/")
+        return redirect("'/signin/'")
     return render(request, 'index.html', context)
 
 def dashboard(request, username):
     try:
         user = User.objects.get(username=username)
+        if 'user_id' not in request.session:
+            return redirect('/signin/')
+
         context = {"user": user}
 
     except User.DoesNotExist:
@@ -47,6 +53,9 @@ def dashboard(request, username):
 def myspace(request, username):
     try:
         user = User.objects.get(username=username)
+        if 'user_id' not in request.session:
+            return redirect('/signin/')
+
         context = {"user": user}
 
     except User.DoesNotExist:
@@ -57,6 +66,9 @@ def myspace(request, username):
 def account(request, username):
     try:
         user = User.objects.get(username=username)
+        if 'user_id' not in request.session:
+            return redirect('/signin/')
+
         context = {"user": user}
 
     except User.DoesNotExist:
@@ -67,6 +79,9 @@ def account(request, username):
 def billing(request, username):
     try:
         user = User.objects.get(username=username)
+        if 'user_id' not in request.session:
+            return redirect('/signin/')
+
         context = {"user": user}
 
     except User.DoesNotExist:
@@ -77,6 +92,9 @@ def billing(request, username):
 def support(request, username):
     try:
         user = User.objects.get(username=username)
+        if 'user_id' not in request.session:
+            return redirect('/signin/')
+
         context = {"user": user}
 
     except User.DoesNotExist:
@@ -112,15 +130,23 @@ def login(request):
     try:
         user = User.objects.get(username=username)
         if password == user.password:
-            request.session[f'{user.id}'] = user.username
+            request.session['user_id'] = user.id
             return HttpResponseRedirect(reverse("cloud:home", args=(user.username, )))
         else:
             return HttpResponse('incorrect Password')
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
 
-def logout(request, id):
-    del request.session[f"{id}"]
+def signout(request, id):
+# try:
+    user = User.objects.get(id=id)
+    if 'user_id' in request.session:
+        del request.session['user_id']
+# except:
+        return redirect("/signin/")
+    else:
+        print("No session found")
+
 
 def update_ac_details(request, username):
     if request.method == "POST":
