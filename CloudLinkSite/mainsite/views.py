@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirec
 from django.template import loader
 from django.http import Http404
 from django.urls import reverse
-from .models import User
-import hashlib
-# Create your views here.
 
+from .models import User
+
+import hashlib
+import os
+
+# Create your views here.
 
 def overview_page(request):
     return render(request, 'overview.html')

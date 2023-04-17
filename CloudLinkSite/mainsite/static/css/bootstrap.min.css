@@ -43,6 +43,10 @@
     }
 }
 
+::-webkit-scrollbar {
+    width: 5px;  /* remove scrollbar space */
+    background: #fff !important;  /* optional: just make scrollbar invisible */
+}
 body {
     margin: 0;
     font-family: "Rubik", sans-serif;
