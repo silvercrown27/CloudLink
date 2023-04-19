@@ -17,3 +17,6 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+
+class MyMedia(models.Model):
+    image = models.ImageField(upload_to='media/')

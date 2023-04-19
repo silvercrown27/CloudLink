@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import Http404
 from django.urls import reverse
 
-from .models import User
+from .models import User, MyMedia
 
 import hashlib
 import os
@@ -31,14 +31,17 @@ def home_page(request, username):
         if 'user_id' not in request.session:
             return redirect('/signin/')
 
-        context = {"user": user}
+        # get the URL of the user's profile picture
+        profile_pic_url = MyMedia.image if MyMedia.image else None
+
+        # add the profile picture URL to the context
+        context = {"user": user, "profile_pic_url": profile_pic_url}
 
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
 
-    except:
-        return redirect("'/signin/'")
     return render(request, 'index.html', context)
+
 
 def dashboard(request, username):
     try:

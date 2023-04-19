@@ -1,4 +1,7 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
+
 from . import views
 
 app_name = 'cloud'
@@ -18,4 +21,4 @@ urlpatterns = [
     path('signout/<int:id>/', views.signout, name='signout'),
     path('register/', views.register, name='register'),
     path('update/<str:username>/', views.update_ac_details, name='update')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
