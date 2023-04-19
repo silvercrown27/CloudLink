@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirec
 from django.template import loader
 from django.http import Http404
 from django.urls import reverse
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
 
-from .models import User, MyMedia
+from .models import User
 
 import hashlib
 import os
@@ -31,11 +33,17 @@ def home_page(request, username):
         if 'user_id' not in request.session:
             return redirect('/signin/')
 
-        # get the URL of the user's profile picture
-        profile_pic_url = MyMedia.image if MyMedia.image else None
+        """
+        Given a context dictionary and a directory path, adds the paths of all image
+        files in the directory to the context under the key 'image_paths'.
+        """
 
-        # add the profile picture URL to the context
-        context = {"user": user, "profile_pic_url": profile_pic_url}
+        image_paths = []
+        for filename in os.listdir(settings.MEDIA_ROOT):
+            if filename.endswith('.jpg') or filename.endswith('.png'):
+                path = os.path.join('img', filename)
+                image_paths.append(path)
+        context = {'user': user, 'image_paths': image_paths}
 
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
@@ -144,11 +152,9 @@ def login(request):
         raise Http404(f"No user registered under the name {username}")
 
 def signout(request, id):
-# try:
     user = User.objects.get(id=id)
     if 'user_id' in request.session:
         del request.session['user_id']
-# except:
         return redirect("/signin/")
     else:
         print("No session found")
