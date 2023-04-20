@@ -107,7 +107,6 @@
             <div class="p-2 w-100">
               <input class="form-control" type="search" placeholder="Search your libraries" aria-label="Search">
             </div>
-
           </form>
           <div class="card my-5 ">
             <h5 class="card-title">Your Files</h5>
@@ -144,40 +143,37 @@
           </div>
         </div>
         <div class="col-sm-9 text-light d-flex" style="overflow-y: scroll; height: 100vh;">
-          <div class="col-sm-6 mr-auto p-2">
+          <div class="col-sm-9 mr-auto p-2">
             <!-- Content for main section of the page -->
             <div class="container-fluid">
               <h1 class="text-light">Welcome, {{user.username}}</h1>
             </div>
-            <div class="container-fluid d-flex flex-columns my-4">
+            <div class="container-fluid my-4">
               {% for i in image_paths %}
-              <div class="row h-50 w-70 m-lg-2">
+              <div class="p-2 h-70 w-70 m-lg-3 d-flex justify-content-center">
                 <img src="{% static i %}" alt="" style="height: 500px; width: 400px;">
               </div>
               {% endfor %}
             </div>
-
-            <div class="col-sm-3 ml-auto p-2 text-light">
+          </div>
+          <div class="col-sm-3 ml-auto p-2 text-light">
               <!-- Content for right sidebar -->
-              <div>
-                <div>
+              <div class="container-fluid">
                   <h5>Shared with You</h5>
                   <p>You have been shared 5 files by other users.</p>
                   <a href="#" class="btn btn-primary">View Shared Files</a>
-                </div>
-                <div>
-                  <ul class="list-group">
-                    <a>File Upload</a>
-                    <a>File Sharing</a>
-                    <a>File Sync</a>
-                    <a>Trash Bin</a>
-                  </ul>
-                </div>
               </div>
-            </div>
+              <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action">File Upload</a>
+                  <a href="#" class="list-group-item list-group-item-action">File Sharing</a>
+                  <a href="#" class="list-group-item list-group-item-action">File Sync</a>
+                  <a href="#" class="list-group-item list-group-item-action">Trash Bin</a>
+              </div>
           </div>
         </div>
       </div>
+    </div>
+    </div>
       <!-- User's Page End -->
 
 
