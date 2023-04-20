@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirec
 from django.template import loader
 from django.http import Http404
 from django.urls import reverse
-from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 
 from .models import User
@@ -33,10 +32,8 @@ def home_page(request, username):
         if 'user_id' not in request.session:
             return redirect('/signin/')
 
-        """
-        Given a context dictionary and a directory path, adds the paths of all image
-        files in the directory to the context under the key 'image_paths'.
-        """
+        # Add a context dictionary and a directory path then add the paths of
+        # all image files in the directory to the context under the key 'image_paths'.
 
         image_paths = []
         for filename in os.listdir(settings.MEDIA_ROOT):
@@ -184,7 +181,5 @@ def update_ac_details(request, username):
         user.zip = zip
         user.phone = phone
         user.save()
-        # except:
-        #     raise Http404(f"The Username {username} is not available!")
 
     return HttpResponseRedirect(reverse("cloud:account", args=(username, )))
