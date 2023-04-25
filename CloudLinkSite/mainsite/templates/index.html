@@ -41,7 +41,7 @@
   <body style="font-family: Arial, Helvetica, sans-serif; background-color: #0e191d">
     <!-- Spinner Start -->
     <div id="spinner"
-      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
       <div class="spinner"></div>
     </div>
     <!-- Spinner End -->
@@ -147,30 +147,31 @@
             <div class="container-fluid">
               <h1 class="text-light">Welcome, {{user.username}}</h1>
             </div>
-            <div class="container-fluid my-5">
+            <div class="container-fluid justify-content-center my-5">
+
               {% for i in image_paths %}
-              <div class="container-fluid my-3">
+              <div class="container-fluid my-4">
                 <a class="bg-transparent border-0" type="button" id="userProfileDropdown"
                    data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="{% static 'img/profile.jpg' %}" alt="User Profile Photo" class="rounded-circle" width="30"
+                  <img src="{% static 'img/profile.jpg' %}" loading="lazy" alt="User Profile Photo" class="rounded-circle" width="30"
                        height="30">
                   <label for="">{{ user.username }}</label>
                 </a>
               </div>
 
               <div class="p-2 h-70 w-70 m-lg-3 d-flex justify-content-center">
-                <div class="container-fluid w-80">
+                <div class="container-fluid w-80" style="text-align: center;">
                   <img src="{% static i %}" alt="" style="max-height: 1000px; max-width: 800px;">
-                  <div class="container-fluid mt-3">
+                  <div class="container-fluid mt-3" style="padding: 0">
                     <form class="d-flex">
-                      <input class="form-control mr-2" type="text" placeholder="Add a comment...">
-                      <button class="btn btn-outline-secondary" type="submit">
-                        <i class="bi bi-send-fill fa-2x"></i>
+                      <input class="form-control mr-2" type="text" placeholder="Add a comment..." style="height: 50px; width: 780px; border-radius: 50px;">
+                      <button class="btn btn-outline-secondary bg-transparent border-0" type="submit">
+                        <i class="bi bi-send-fill fa-1x"></i>
                       </button>
                     </form>
                   </div>
                 </div>
-                <div class="container-fluid flex-rows w-15 justify-content-center">
+                <div class="container-fluid d-flex w-15" style="align-items: center; flex-direction: column; justify-content: center;">
                   <div class="row w-100"><i class="bi bi-heart fa-2x"></i></div>
                   <div class="row w-100"><i class="bi bi-bookmark fa-2x"></i></div>
                   <div class="row w-100"><i class="bi bi-chat-dots fa-2x"></i></div>
@@ -197,7 +198,6 @@
           </div>
         </div>
       </div>
-    </div>
     </div>
       <!-- User's Page End -->
 
