@@ -47,27 +47,25 @@
         <!-- Spinner End -->
 
         <!--Navbar start-->
-        <div class="container-fluid m-xl-0 ">
-            <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" style="height: 100px; background-color: #0e191d;">
-                <div class="container-fluid">
-                    <a href="/{{user.username}}/home/" class="navbar-brand p-0">
-                        <h1 class="m-0"><i class="fa fa-cloud me-2 color: var(--primary);"></i>CloudLink</h1>
-                    </a>
-                    <div class="navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto py-0">
-                            <a href="/register/" class="nav-item nav-link active">Sign In</a>
-                            <a href="/register/" class="nav-item nav-link active">Sign Up</a>
-                        </div>
-                        <div class="navbar-nav ms-auto py-0 d-flex">
-                            <a href="/" class="nav-item nav-link">Home</a>
-                            <a href="/about/" class="nav-item nav-link">About</a>
-                            <a href="/services/" class="nav-item nav-link">Services</a>
-                            <a href="/contact/" class="nav-item nav-link">Contact</a>
-                        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" style="height: 100px; background-color: #0e191d;">
+            <div class="container-fluid">
+                <a href="/{{user.username}}/home/" class="navbar-brand p-0">
+                    <h1 class="m-0"><i class="fa fa-cloud me-2 color: var(--primary);"></i>CloudLink</h1>
+                </a>
+                <div class="navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="/register/" class="nav-item nav-link active">Sign In</a>
+                        <a href="/register/" class="nav-item nav-link active">Sign Up</a>
+                    </div>
+                    <div class="navbar-nav ms-auto py-0 d-flex">
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/about/" class="nav-item nav-link">About</a>
+                        <a href="/services/" class="nav-item nav-link">Services</a>
+                        <a href="/contact/" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
         <!-- Navbar End -->
 
         <!-- Full Screen Search Start -->
@@ -117,7 +115,7 @@
                         </div>
                         <br>
                         <div style="text-align: center; margin-top: 20px;">
-                            <h6 class="text-light mb-4" style="text-align: center">OR<br>Don't have an account</h6>
+                            <h6 class="text-light mb-4" style="text-align: center">Don't have an account</h6>
                             <br>
                             <button class="btn btn-primary w-50 py-3" type="button" onclick="nextPage(1)">Create an
                                 account</button>
@@ -225,17 +223,14 @@
                             <button class="btn btn-primary w-50 py-3" type="submit">Submit</button>
                         </div>
                     </div>
-                    </form>
-                </div>
+                </form>
             </div>
+        </div>
 
         <!--    sign In form end -->
-        <!-- form end -->
-
-
 
         <!-- Footer Start -->
-        <div class="container position-absolute bg-dark text-light">
+        <div class="container-fluid bg-dark text-light w-100">
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-md-6 footer-about">
@@ -322,6 +317,8 @@
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
         <!-- Template Javascript -->
         <script src="{% static 'lib/easing/easing.min.js' %}"></script>
         <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>

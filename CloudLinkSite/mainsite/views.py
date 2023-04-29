@@ -3,7 +3,7 @@ import hashlib
 from .models import User
 
 from django.http import Http404
-from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponse
 
 
 # Create your views here.
