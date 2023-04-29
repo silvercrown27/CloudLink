@@ -4,43 +4,27 @@
     justify-content: center;
     align-items: center;
 }
+
 .registration {
-    padding: 30px;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 3px solid cyan;
+    top: 130px;
+    margin-bottom: 150px;
     border-radius: 20px;
-    width: 90%;
-    height: 850px;
+    min-height: 1000px;
 }
 
-.registration .signin div input{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    width: 400px;
+.registration input{
+    border-radius: 8px;
+    margin: 5px;
 }
-
-.registration, .signin label {
-    font-weight: bold;
-    text-align: left;
-    float: left;
-}
-
 .registration button {
-    float: left;
-    width: 150px;
-    border-radius: 10px;
+    border-radius: 13px;
 }
-.signin {
+
+.signin, .signup{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.signup div{
+    width: 500px;
+}

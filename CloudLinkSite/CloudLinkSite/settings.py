@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainsite.apps.MainsiteConfig',
+    'usersite.apps.UsersiteConfig',
+    'clearcache',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +82,9 @@ WSGI_APPLICATION = 'CloudLinkSite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'cloudlinkdb.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -122,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mainsite', 'static', 'img')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'usersite', 'static', 'img')
 
 
 # Default primary key field type
