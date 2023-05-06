@@ -82,8 +82,17 @@ WSGI_APPLICATION = 'CloudLinkSite.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'cloudlinkdb.sqlite3',
+=======
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cloudlinkdb',
+        'USER': 'root',
+        'PASSWORD': '*********',
+        'HOST': 'localhost',
+        'PORT': '3306',
+>>>>>>> 1df29f5da6441423be033bc92c73c42206be201f
     }
 }
 
