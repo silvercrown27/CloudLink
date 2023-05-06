@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cloudlinkdb',
         'USER': 'root',
-        'PASSWORD': 'Unstoppab@1',
+        'PASSWORD': '*********',
         'HOST': 'localhost',
         'PORT': '3306',
     }
