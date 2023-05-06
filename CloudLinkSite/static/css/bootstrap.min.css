@@ -4815,6 +4815,8 @@ fieldset:disabled .btn {
 
 .card {
     position: relative;
+    margin-right: 10px;
+    margin-left: 10px;
     display: flex;
     flex-direction: column;
     min-width: 0;

@@ -47,61 +47,69 @@
     <!-- Spinner End -->
 
     <!-- Navbar Start -->
- <div class="container-fluid position-absolute m-xl-0 ">
-  <nav class="navbar navbar-expand-lg navbar-dark px-4 py-3 m-xl-0" style="height: 100px; background-color: #0e191d;">
-    <div class="container-fluid">
-      <a href="../home/" class="navbar-brand p-0">
-        <h1 class="m-0"><i class="fa fa-cloud me-2 color: var(--primary);"></i>CloudLink</h1>
-      </a>
-      <div class="navbar-nav ms-auto py-0">
-        <a href="../myspace/" class="nav-item nav-link">MySpace</a>
-        <a href="../dashboard/" class="nav-item nav-link">Dashboard</a>
-        <a href="../account/" class="nav-item nav-link">Account Settings</a>
-        <a href="../billing/" class="nav-item nav-link">Billing</a>
-        <a href="../support/" class="nav-item nav-link">Support</a>
-      </div>
-      <div class="navbar-nav ms-auto py-0">
-        <!-- User Profile Icon with Dropdown -->
-        <div class="dropdown">
-          <a class="dropdown-toggle bg-transparent border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="{% static 'img/profile.jpg' %}" alt="User Profile Photo" class="rounded-circle" width="30" height="30">
+    <div class="container-fluid position-absolute m-xl-0 ">
+      <nav class="navbar navbar-expand-lg navbar-dark px-4 py-3 m-xl-0"
+        style="height: 100px; background-color: #0e191d;">
+        <div class="container-fluid">
+          <a href="../home/" class="navbar-brand p-0">
+            <h1 class="m-0"><i class="fa fa-cloud me-2 color: var(--primary);"></i>CloudLink</h1>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="userProfileDropdown" style="left: -300%; color: #fff; width: 200px;" data-bs-trigger="click">
-            <li><a class="dropdown-item" href="#">Signed in as <br>{{ user.username }}</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Your profile</a></li>
-            <li><a class="dropdown-item" href="#">Your files</a></li>
-            <li><a class="dropdown-item" href="#">Your favorites</a></li>
-            <li><a class="dropdown-item" href="#">Your stars</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="/{{ user.username }}/signout/">Sign out</a></li>
-          </ul>
+          <div class="navbar-nav ms-auto py-0">
+            <a href="../myspace/" class="nav-item nav-link">MySpace</a>
+            <a href="../dashboard/" class="nav-item nav-link">Dashboard</a>
+            <a href="../account/" class="nav-item nav-link">Account Settings</a>
+            <a href="../billing/" class="nav-item nav-link">Billing</a>
+            <a href="../support/" class="nav-item nav-link">Support</a>
+          </div>
+          <div class="navbar-nav ms-auto py-0">
+            <!-- User Profile Icon with Dropdown -->
+            <div class="dropdown">
+              <a class="dropdown-toggle bg-transparent border-0" type="button" id="userProfileDropdown"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'img/user.png' %}" alt="User Profile Photo" class="rounded-circle" width="30"
+                  height="30" style="transform: scale(.8);">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="userProfileDropdown"
+                style="left: -300%; color: #fff; width: 200px;" data-bs-trigger="click">
+                <li><a class="dropdown-item" href="#">Signed in as <br>{{ user.username }}</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Your profile</a></li>
+                <li><a class="dropdown-item" href="#">Your files</a></li>
+                <li><a class="dropdown-item" href="#">Your favorites</a></li>
+                <li><a class="dropdown-item" href="#">Your stars</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="../signout/">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
+      </nav>
     </div>
-  </nav>
-</div>
-<!-- Navbar End -->
+    <!-- Navbar End -->
 
-<!-- Full Screen Search Start -->
-<div class="modal fade" id="searchModal" tabindex="-1">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
-      <div class="modal-header border-0">
-        <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body d-flex align-items-center justify-content-center">
-        <div class="input-group" style="max-width: 600px;">
-          <input type="text" class="form-control bg-transparent border-primary p-3"
-            placeholder="Type search keyword">
-          <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+    <!-- Full Screen Search Start -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+          <div class="modal-header border-0">
+            <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex align-items-center justify-content-center">
+            <div class="input-group" style="max-width: 600px;">
+              <input type="text" class="form-control bg-transparent border-primary p-3"
+                placeholder="Type search keyword">
+              <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Full Screen Search End -->
+    <!-- Full Screen Search End -->
 
     <!-- User's Page Start -->
     <div class="container-fluid position-fixed" style="top: 100px; background-color: #1e2537;">
@@ -161,8 +169,7 @@
 
               {% for i in image_paths %}
               <div class="container-fluid my-4">
-                <a class="bg-transparent border-0" type="button" id="userProfileDropdown" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <a class="bg-transparent border-0" type="button" aria-expanded="false">
                   <img src="{% static 'img/profile.jpg' %}" loading="lazy" alt="User Profile Photo"
                     class="rounded-circle" width="30" height="30">
                   <label>{{ user.username }}</label>

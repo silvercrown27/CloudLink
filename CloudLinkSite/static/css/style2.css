@@ -33,3 +33,13 @@
 .signup div{
     width: 500px;
 }
+
+.zoom {
+  transition: transform .2s;
+  width: 30px;
+  height: 30px;
+}
+
+.zoom:hover {
+  transform: scale(1.5);
+}

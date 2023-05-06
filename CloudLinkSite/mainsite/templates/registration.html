@@ -47,7 +47,8 @@
         <!-- Spinner End -->
 
         <!--Navbar start-->
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" style="height: 100px; background-color: #0e191d;">
+        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0"
+            style="height: 100px; background-color: #0e191d;">
             <div class="container-fluid">
                 <a href="/{{user.username}}/home/" class="navbar-brand p-0">
                     <h1 class="m-0"><i class="fa fa-cloud me-2 color: var(--primary);"></i>CloudLink</h1>
@@ -105,9 +106,8 @@
                         </div>
                         <div>
                             <label for="password">Password:</label><br>
-                            <input type="password" id="pass-word" name="password"
-                                class="form-control border-white p-3" placeholder="Enter Your Password"
-                                required><br>
+                            <input type="password" id="pass-word" name="password" class="form-control border-white p-3"
+                                placeholder="Enter Your Password" required><br>
                         </div>
                         <!-- Submit Button -->
                         <div style="text-align: center; margin-top: 20px;"><br>
@@ -126,16 +126,16 @@
 
             <!--    sign up form start -->
             <div class="signup">
-                    <form action="/register/" method="post">
-                        {% csrf_token %}
-                        <div id="selection_tab2" style="display: None;">
+                <form action="/register/" method="post">
+                    {% csrf_token %}
+                    <div id="selection_tab2" style="display: None;">
                         <!-- Personal Information -->
                         <h2>Personal Information</h2>
                         <hr>
                         <div>
                             <label for="first-name">First Name</label><br>
-                            <input type="text" id="first-name" name="first_name"
-                                class="form-control border-white p-3" placeholder="First Name" required><br>
+                            <input type="text" id="first-name" name="first_name" class="form-control border-white p-3"
+                                placeholder="First Name" required><br>
                         </div>
                         <div>
                             <label for="last-name">Last Name</label><br>
@@ -153,7 +153,8 @@
                                 placeholder="Your Phone" required><br>
                         </div>
                         <div>
-                            <button class="btn btn-primary" type="button" onclick="nextPage(2)" style="float: right;">Next</button>
+                            <button class="btn btn-primary" type="button" onclick="nextPage(2)"
+                                style="float: right;">Next</button>
                         </div>
                     </div>
 
@@ -163,13 +164,13 @@
                         <hr>
                         <div>
                             <label for="address-line-1">Address Line 1</label><br>
-                            <input type="text" id="address-line-1" name="address1"
-                                class="form-control border-white p-3" placeholder="Address-1"><br>
+                            <input type="text" id="address-line-1" name="address1" class="form-control border-white p-3"
+                                placeholder="Address-1"><br>
                         </div>
                         <div>
                             <label for="address-line-2">Address Line 2</label><br>
-                            <input type="text" id="address-line-2" name="address2"
-                                class="form-control border-white p-3" placeholder="Address-2"><br>
+                            <input type="text" id="address-line-2" name="address2" class="form-control border-white p-3"
+                                placeholder="Address-2"><br>
                         </div>
                         <div>
                             <label for="city">City</label><br>
@@ -187,10 +188,12 @@
                                 placeholder="Zip Code" required><br>
                         </div>
                         <div>
-                            <button class="btn btn-primary" type="button" onclick="previousPage(3)" style="float:left;">Back</button>
+                            <button class="btn btn-primary" type="button" onclick="previousPage(3)"
+                                style="float:left;">Back</button>
                         </div>
                         <div>
-                            <button class="btn btn-primary" type="button" onclick="nextPage(3)" style="float:right;">Next</button>
+                            <button class="btn btn-primary" type="button" onclick="nextPage(3)"
+                                style="float:right;">Next</button>
                         </div>
                     </div>
 
@@ -205,19 +208,20 @@
                         </div>
                         <div>
                             <label for="password">Password</label><br>
-                            <input type="password" id="password" name="password"
-                                class="form-control border-white p-3" placeholder="Type Your Password" required><br>
+                            <input type="password" id="password" name="password" class="form-control border-white p-3"
+                                placeholder="Type Your Password" required><br>
                         </div>
                         <div>
-                            <span id="password_warning" style="display:none;color:red;">Passwords do not match</span><br>
+                            <span id="password_warning" style="display:none;color:red;">Passwords do not
+                                match</span><br>
                             <label for="confirm_password">Confirm Password:</label>
-                            <input type="password" id="confirm_password" name="confirm_password" onkeyup="checkPassword()"
-                                   class="form-control border-white p-3" placeholder="Confirm Your password"
-                                required><br>
+                            <input type="password" id="confirm_password" name="confirm_password"
+                                onkeyup="checkPassword()" class="form-control border-white p-3"
+                                placeholder="Confirm Your password" required><br>
                         </div>
                         <div>
-                            <button class="btn btn-primary" type="button"
-                                    onclick="previousPage(4)" style="float:left">Back</button>
+                            <button class="btn btn-primary" type="button" onclick="previousPage(4)"
+                                style="float:left">Back</button>
                         </div>
 
                         <!-- Submit Button -->
@@ -305,7 +309,8 @@
                     <div class="row justify-content-end">
                         <div class="col-lg-8 col-md-6">
                             <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                                <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Cloudlink 2023</a>. All
+                                <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Cloudlink 2023</a>.
+                                    All
                                     Rights Reserved.
                                 </p>
                             </div>

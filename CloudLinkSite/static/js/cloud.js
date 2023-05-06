@@ -75,3 +75,54 @@ function checkPassword() {
     password_warning.style.display = "none";
   }
 }
+
+var storageChart = new Chart(document.getElementById('storage-chart'), {
+    type: 'doughnut',
+    data: {
+    labels: ['Used', 'Free'],
+    datasets: [{
+      data: [60, 40],
+      backgroundColor: ['#007bff', '#e2e3e5'],
+      borderWidth: 0
+    }]
+    },
+    options: {
+    maintainAspectRatio: false,
+    cutoutPercentage: 80,
+    legend: {
+      display: false
+    }
+    }
+    });
+
+// Media Chart
+var mediaChart = new Chart(document.getElementById('media-chart'), {
+    type: 'line',
+    data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+    datasets: [{
+      data: [20, 50, 80, 60, 70, 90, 100],
+      label: 'Files',
+      borderColor: '#007bff',
+      fill: false
+    }]
+    },
+    options: {
+    maintainAspectRatio: false,
+    legend: {
+      display: false
+    },
+    scales: {
+      xAxes: [{
+        gridLines: {
+          display: false
+        }
+      }],
+      yAxes: [{
+        gridLines: {
+          display: false
+        }
+      }]
+    }
+    }
+    });
