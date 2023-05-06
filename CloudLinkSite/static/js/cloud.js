@@ -126,3 +126,17 @@ var mediaChart = new Chart(document.getElementById('media-chart'), {
     }
     }
     });
+
+const fileTypeSelect = document.getElementById('file-type');
+const fileInputContainer = document.getElementById('file-input-container');
+const folderInputContainer = document.getElementById('folder-input-container');
+
+fileTypeSelect.addEventListener('change', (event) => {
+    if (event.target.value === 'file') {
+        fileInputContainer.style.display = 'block';
+        folderInputContainer.style.display = 'none';
+    } else {
+        fileInputContainer.style.display = 'none';
+        folderInputContainer.style.display = 'block';
+    }
+});

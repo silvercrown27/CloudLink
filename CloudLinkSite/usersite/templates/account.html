@@ -52,20 +52,20 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
-                            <a href="/{{user.username}}/myspace/" class="nav-item nav-link active">MySpace</a>
-                            <a href="/{{user.username}}/dashboard/" class="nav-item nav-link">Dashboard</a>
-                            <a href="/{{user.username}}/account/" class="nav-item nav-link">Account Settings</a>
-                            <a href="/{{user.username}}/billing/" class="nav-item nav-link">Billing</a>
-                            <a href="/{{user.username}}/support/" class="nav-item nav-link">Support</a>
+                            <a href="../myspace/" class="nav-item nav-link">MySpace</a>
+                            <a href="../dashboard/" class="nav-item nav-link">Dashboard</a>
+                            <a href="../account/" class="nav-item nav-link active">Account Settings</a>
+                            <a href="../billing/" class="nav-item nav-link">Billing</a>
+                            <a href="../support/" class="nav-item nav-link">Support</a>
                         </div>
                         <div class="navbar-nav ms-auto py-0">
                             <!-- User Profile Icon with Dropdown -->
                             <div class="dropdown">
-                                <a class="dropdown-toggle bg-transparent border-0" type="button"
-                                    id="userProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{% static 'img/profile.jpg' %}" alt="User Profile Photo"
-                                        class="rounded-circle" width="30" height="30">
-                                </a>
+                              <a class="dropdown-toggle bg-transparent border-0" type="button" id="userProfileDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'img/user.png' %}" alt="User Profile Photo" class="rounded-circle" width="30"
+                                  height="30" style="transform: scale(.8);">
+                              </a>
                                 <ul class="dropdown-menu" aria-labelledby="userProfileDropdown"
                                     style="left: -110px; color: #fff;" data-bs-trigger="click">
                                     <li><a class="dropdown-item" href="#">Signed in as <br>{{ user.username }}</a></li>
@@ -80,7 +80,7 @@
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                    <li><a class="dropdown-item" href="../signout/">Sign out</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card-body text-center">
-                            <img src="{% media 'img/user.jpg' %}" class="rounded-circle mb-2" width="350" height="350"
+                            <img src="{% static 'img/user.png' %}" class="rounded-circle mb-2" width="350" height="350"
                                 alt="Profile Photo">
                             <h4 class="card-title">{{ user.username }}</h4>
                             <p class="card-text">{{ user.email }}</p>
@@ -117,12 +117,12 @@
                                     </div>
                                     <div>
                                         <label for="first-name">First Name</label><br>
-                                        <input type="text" id="first-name" name="firstname" value="{{ user.firstname }}"
+                                        <input type="text" id="first-name" name="first_name" value="{{ user.firstname }}"
                                             class="form-control border-white p-3" placeholder="First Name" required><br>
                                     </div>
                                     <div>
                                         <label for="last-name">Last Name</label><br>
-                                        <input type="text" id="last-name" name="lastname"
+                                        <input type="text" id="last-name" name="last_name"
                                             class="form-control border-white p-3" placeholder="Last Name"
                                             value="{{ user.lastname }}" required><br>
                                     </div>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div>
                                         <label for="zip">Zip Code</label><br>
-                                        <input type="text" id="zip" name="zip" class="form-control border-white p-3"
+                                        <input type="text" id="zip" name="zip_code" class="form-control border-white p-3"
                                             placeholder="Zip Code" value="{{ user.zip }}" required><br>
                                     </div>
                                     <div class="d-grid">

@@ -82,12 +82,8 @@ WSGI_APPLICATION = 'CloudLinkSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cloudlinkdb',
-        'USER': 'root',
-        'PASSWORD': 'Unstoppab@1',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'cloudlinkdb.sqlite3',
     }
 }
 
@@ -132,7 +128,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

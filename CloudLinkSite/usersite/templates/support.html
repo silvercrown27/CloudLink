@@ -58,20 +58,20 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav ms-auto py-0">
-                            <a href="/{{user.username}}/myspace/" class="nav-item nav-link">MySpace</a>
-                            <a href="/{{user.username}}/dashboard/" class="nav-item nav-link">Dashboard</a>
-                            <a href="/{{user.username}}/account/" class="nav-item nav-link">Account Settings</a>
-                            <a href="/{{user.username}}/billing/" class="nav-item nav-link">Billing</a>
-                            <a href="/{{user.username}}/support/" class="nav-item nav-link active">Support</a>
+                            <a href="../myspace/" class="nav-item nav-link">MySpace</a>
+                            <a href="../dashboard/" class="nav-item nav-link">Dashboard</a>
+                            <a href="../account/" class="nav-item nav-link">Account Settings</a>
+                            <a href="../billing/" class="nav-item nav-link">Billing</a>
+                            <a href="../support/" class="nav-item nav-link active">Support</a>
                         </div>
                         <div class="navbar-nav ms-auto py-0">
                             <!-- User Profile Icon with Dropdown -->
                             <div class="dropdown">
-                                <a class="dropdown-toggle bg-transparent border-0" type="button"
-                                    id="userProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{% static 'img/profile.jpg' %}" alt="User Profile Photo"
-                                        class="rounded-circle" width="30" height="30">
-                                </a>
+                              <a class="dropdown-toggle bg-transparent border-0" type="button" id="userProfileDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{% static 'img/user.png' %}" alt="User Profile Photo" class="rounded-circle" width="30"
+                                  height="30" style="transform: scale(.8);">
+                              </a>
                                 <ul class="dropdown-menu" aria-labelledby="userProfileDropdown"
                                     style="left: -110px; color: #fff;" data-bs-trigger="click">
                                     <li><a class="dropdown-item" href="#">Signed in as <br>{{ user.username }}</a></li>
@@ -86,7 +86,7 @@
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                    <li><a class="dropdown-item" href="../signout/">Sign out</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -114,6 +114,23 @@
             <div class="card-body">
               <div class="container-fluid">
                 <div class="row">
+                  <div class="container-fluid">
+                    <form method="post" enctype="multipart/form-data">
+    <select name="file-type" id="file-type">
+        <option value="file">File</option>
+        <option value="folder">Folder</option>
+    </select>
+    <div id="file-input-container">
+        <label for="file-input">Select a file:</label>
+        <input type="file" name="file" id="file-input">
+    </div>
+    <div id="folder-input-container" style="display: none;">
+        <label for="folder-input">Select a folder:</label>
+        <input type="file" name="folder" id="folder-input" webkitdirectory directory multiple>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+                  </div>
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>

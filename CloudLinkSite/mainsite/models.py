@@ -1,11 +1,10 @@
-import uuid
-
 from django.core.validators import RegexValidator, MinLengthValidator
 from django.db import models
 
+import uuid
 
 class User(models.Model):
-    id = models.CharField(max_length=8, primary_key=True, editable=False)
+    id = models.CharField(max_length=15, primary_key=True, editable=False)
     username = models.CharField(max_length=30, unique=True, verbose_name='Username', validators=[RegexValidator(
         regex='^[a-zA-Z0-9._-]+$',
         message='Username can only contain letters, numbers, periods, underscores, and hyphens.'
@@ -25,15 +24,16 @@ class User(models.Model):
         message='Zip code must be in the format XXXXX or XXXXX-XXXX.'
     )])
     date_joined = models.DateTimeField(auto_now_add=True)
-    last_login = models.DateTimeField(null=True, blank=True)
+    last_login = models.DateTimeField(auto_now_add=True, editable=True)
     is_staff = models.BooleanField(default=False)
+    allocated_space = models.IntegerField(default=50000, blank=False)
     password = models.CharField(max_length=100, validators=[MinLengthValidator(8)], verbose_name='Password')
 
     REQUIRED_FIELDS = ['email', 'firstname', 'lastname', 'phone', 'address1', 'city', 'state', 'zip', 'password']
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.id = str(uuid.uuid4().hex[:8]).upper()
+            self.id = str(uuid.uuid4().hex[:15]).upper()
         super().save(*args, **kwargs)
 
     def get_full_name(self):
@@ -44,12 +44,3 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
-
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    bio = models.CharField(max_length=500, blank=True, verbose_name='Bio')
-    profile_picture = models.ImageField(upload_to='profiles', blank=True, null=True, verbose_name='Profile Picture')
-
-    def __str__(self):
-        return self.user.username + "'s Profile"
