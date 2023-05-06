@@ -1,19 +1,55 @@
+import uuid
+
+from django.core.validators import RegexValidator, MinLengthValidator
 from django.db import models
 
-# Create your models here.
 
 class User(models.Model):
-    username = models.CharField(max_length=50, blank=False, unique=True)
-    firstname = models.CharField(max_length=100, blank=False)
-    lastname = models.CharField(max_length=100, blank=False)
-    phone = models.IntegerField(blank=False)
-    email = models.EmailField(max_length=100, blank=False)
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100)
-    city = models.CharField(max_length=50, blank=False)
-    state = models.CharField(max_length=50, blank=False)
-    zip = models.IntegerField()
-    password = models.CharField(max_length=25, blank=False)
+    id = models.CharField(max_length=8, primary_key=True, editable=False)
+    username = models.CharField(max_length=30, unique=True, verbose_name='Username', validators=[RegexValidator(
+        regex='^[a-zA-Z0-9._-]+$',
+        message='Username can only contain letters, numbers, periods, underscores, and hyphens.'
+    )])
+    first_name = models.CharField(max_length=100, verbose_name='firstname')
+    last_name = models.CharField(max_length=100, verbose_name='lastname')
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
+                                 message="Phone number must be in the format: '+999999999'. Up to 15 digits allowed.")
+    phone = models.CharField(validators=[phone_regex], max_length=17, blank=True, verbose_name='Phone Number')
+    email = models.EmailField(max_length=100, unique=True, verbose_name='Email Address')
+    address1 = models.CharField(max_length=100, blank=True, verbose_name='Address Line 1')
+    address2 = models.CharField(max_length=100, blank=True, null=True, verbose_name='Address Line 2')
+    city = models.CharField(max_length=50, verbose_name='City')
+    state = models.CharField(max_length=10, verbose_name='State')
+    zip_code = models.CharField(max_length=10, verbose_name='zip', validators=[RegexValidator(
+        regex='^\d{5}(?:[-\s]\d{4})?$',
+        message='Zip code must be in the format XXXXX or XXXXX-XXXX.'
+    )])
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(null=True, blank=True)
+    is_staff = models.BooleanField(default=False)
+    password = models.CharField(max_length=100, validators=[MinLengthValidator(8)], verbose_name='Password')
+
+    REQUIRED_FIELDS = ['email', 'firstname', 'lastname', 'phone', 'address1', 'city', 'state', 'zip', 'password']
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.id = str(uuid.uuid4().hex[:8]).upper()
+        super().save(*args, **kwargs)
+
+    def get_full_name(self):
+        return f'{self.firstname} {self.lastname}'
+
+    def get_short_name(self):
+        return self.firstname
 
     def __str__(self):
         return self.username
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    bio = models.CharField(max_length=500, blank=True, verbose_name='Bio')
+    profile_picture = models.ImageField(upload_to='profiles', blank=True, null=True, verbose_name='Profile Picture')
+
+    def __str__(self):
+        return self.user.username + "'s Profile"

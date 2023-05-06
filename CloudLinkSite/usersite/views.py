@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.template import loader
 from django.http import Http404
 from django.urls import reverse
@@ -6,7 +6,6 @@ from django.conf import settings
 
 from mainsite.models import User
 
-import hashlib
 import os
 
 # Create your views here.
@@ -24,12 +23,12 @@ def home_page(request, username):
             if filename.endswith('.jpg') or filename.endswith('.png'):
                 path = os.path.join('img', filename)
                 image_paths.append(path)
-        context = {'user': user, 'image_paths': image_paths}
+
+        context = {'user': user}
+        return render(request, 'index.html', context)
 
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
-
-    return render(request, 'index.html', context)
 
 
 def dashboard(request, username):
@@ -53,10 +52,10 @@ def myspace(request, username):
 
         context = {"user": user}
 
+        return render(request, "myspace.html", context)
+
     except User.DoesNotExist:
         raise Http404(f"No user registered under the name {username}")
-
-    return render(request, 'myspace.html', context)
 
 def account(request, username):
     try:
@@ -97,8 +96,8 @@ def support(request, username):
 
     return render(request, 'support.html', context)
 
-def signout(request, id):
-    user = User.objects.get(id=id)
+def signout(request, username):
+    user = User.objects.get(username=username)
     if 'user_id' in request.session:
         del request.session['user_id']
         return redirect("/signin/")

@@ -1,5 +1,7 @@
 import hashlib
 
+from django.urls import reverse
+
 from .models import User
 
 from django.http import Http404
@@ -27,21 +29,22 @@ def register(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        firstname = request.POST.get('firstname')
-        lastname = request.POST.get('lastname')
+        firstname = request.POST.get('first_name')
+        lastname = request.POST.get('last_name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
         address1 = request.POST.get('address1')
         address2 = request.POST.get('address2')
         city = request.POST.get('city')
         state = request.POST.get('state')
-        zip = request.POST.get('zip')
+        zip_code = request.POST.get('zip_code')
 
         password = hashlib.sha256(password.encode()).hexdigest()
 
-        data = User(username=username, password=password, email=email, firstname=firstname, lastname=lastname,
-                    address1=address1, address2=address2, city=city, state=state, zip=zip, phone=phone)
-        data.save()
+        User.objects.create(
+            username=username, password=password, email=email, first_name=firstname, last_name=lastname,
+            address1=address1, address2=address2, city=city, state=state, zip_code=zip_code, phone=phone
+        )
 
     return redirect('/signin/')
 
@@ -53,7 +56,8 @@ def login(request):
         user = User.objects.get(username=username)
         if password == user.password:
             request.session['user_id'] = user.id
-            return redirect(f"/{username}/home/")
+            url = reverse('usersite:home', args=[username])
+            return redirect(url)
         else:
             return HttpResponse('incorrect Password')
     except User.DoesNotExist:

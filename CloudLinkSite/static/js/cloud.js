@@ -64,3 +64,14 @@ function validatePage(currentPage) {
     }
 }
 
+function checkPassword() {
+  var password = document.getElementById("password");
+  var confirm_password = document.getElementById("confirm_password");
+  var password_warning = document.getElementById("password_warning");
+
+  if (password.value != confirm_password.value) {
+    password_warning.style.display = "inline";
+  } else {
+    password_warning.style.display = "none";
+  }
+}

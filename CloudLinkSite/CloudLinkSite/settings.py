@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'clearcache',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -81,8 +82,12 @@ WSGI_APPLICATION = 'CloudLinkSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'cloudlinkdb.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cloudlinkdb',
+        'USER': 'root',
+        'PASSWORD': 'Unstoppab@1',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -122,8 +127,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'usersite', 'static', 'img')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

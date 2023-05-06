@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/clearcache/', include('clearcache.urls')),
     path('admin/', admin.site.urls),
     path('', include('mainsite.urls')),
-    path('<str:username>/', include('usersite.urls')),
+    path('<username>/', include('usersite.urls')),
 ]

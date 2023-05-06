@@ -15,9 +15,14 @@
 .registration input{
     border-radius: 8px;
     margin: 5px;
+    text-align: center;
 }
 .registration button {
     border-radius: 13px;
+}
+
+.registration label {
+    margin-left: 30px;
 }
 
 .signin, .signup{
