@@ -34,6 +34,10 @@
 
     <!--    javascript styling-->
     <script src="{% static 'js/registration.js' %}"></script>
+    <script src="{% static 'js/cloud.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.css" integrity="sha512-jn95g1I6trH2HZV7Uhq8lXLBoV7lBtGukFXVp1xTzoTGoV7PfLjJzSmSfS8nDZtYtyZ4rq1he4n4bClMh+vVvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js" integrity="sha512-lUZ34YmD2QaM3q8O1Wd7atKAFa6RwJc1fU6bYU6P9l9QFqBL3l8z+m67ieyvD5f1n5r5+v8WOf83FTEvBf9Xng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
   </head>
 
@@ -115,21 +119,40 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="container-fluid">
-                    <form method="post" enctype="multipart/form-data">
-    <select name="file-type" id="file-type">
-        <option value="file">File</option>
-        <option value="folder">Folder</option>
-    </select>
-    <div id="file-input-container">
-        <label for="file-input">Select a file:</label>
-        <input type="file" name="file" id="file-input">
-    </div>
-    <div id="folder-input-container" style="display: none;">
-        <label for="folder-input">Select a folder:</label>
-        <input type="file" name="folder" id="folder-input" webkitdirectory directory multiple>
-    </div>
-    <button type="submit">Submit</button>
-</form>
+                    <form method="post" action="../upload/" enctype="multipart/form-data" id="upload-form">
+                      {% csrf_token %}
+                      <input type="file" id="file_input" webkitdirectory directory multiple>
+                      <button type="submit">Upload</button>
+                    </form>
+
+                    <script>
+                      const uploadForm = document.getElementById('upload-form');
+                      const fileInput = document.getElementById('file_input');
+
+                      fileInput.addEventListener('change', (e) => {
+                        const files = e.target.files;
+                        const formData = new FormData();
+
+                        for (let i = 0; i < files.length; i++) {
+                          const file = files[i];
+                          const filePath = file.webkitRelativePath;
+                          formData.append('file_paths[]', filePath);
+                          formData.append('files[]', file);
+                        }
+
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', uploadForm.action, true);
+                        xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+                        xhr.onload = function () {
+                          if (xhr.status === 200) {
+                            console.log('Files uploaded successfully');
+                          } else {
+                            console.log('Error uploading files');
+                          }
+                        };
+                        xhr.send(formData);
+                      });
+                    </script>
                   </div>
                   <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

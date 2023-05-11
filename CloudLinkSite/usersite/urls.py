@@ -14,4 +14,5 @@ urlpatterns = [
     path('support/', views.support, name='support'),
     path('signout/', views.signout, name='signout'),
     path('update/', views.update_ac_details, name='update'),
+    path('upload/', views.upload, name="upload"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

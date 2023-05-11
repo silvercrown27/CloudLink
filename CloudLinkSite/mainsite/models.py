@@ -4,7 +4,7 @@ from django.db import models
 import uuid
 
 class User(models.Model):
-    id = models.CharField(max_length=15, primary_key=True, editable=False)
+    id = models.CharField(max_length=15, primary_key=True, editable=False, unique=True)
     username = models.CharField(max_length=30, unique=True, verbose_name='Username', validators=[RegexValidator(
         regex='^[a-zA-Z0-9._-]+$',
         message='Username can only contain letters, numbers, periods, underscores, and hyphens.'
@@ -14,7 +14,7 @@ class User(models.Model):
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
                                  message="Phone number must be in the format: '+999999999'. Up to 15 digits allowed.")
     phone = models.CharField(validators=[phone_regex], max_length=17, blank=True, verbose_name='Phone Number')
-    email = models.EmailField(max_length=100, unique=True, verbose_name='Email Address')
+    email = models.EmailField(max_length=100, verbose_name='Email Address')
     address1 = models.CharField(max_length=100, blank=True, verbose_name='Address Line 1')
     address2 = models.CharField(max_length=100, blank=True, null=True, verbose_name='Address Line 2')
     city = models.CharField(max_length=50, verbose_name='City')

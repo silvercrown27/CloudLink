@@ -1,7 +1,10 @@
 import hashlib
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.urls import reverse
 
+from usersite.models import Drives, Folders
 from .models import User
 
 from django.http import Http404
@@ -24,6 +27,23 @@ def services_page(request):
 
 def contact_page(request):
     return render(request, 'contact.html')
+
+
+@receiver(post_save, sender=User)
+def create_user_drive(sender, instance, created, **kwargs):
+    if created:
+        create_main_drive(instance.username)
+
+def create_main_drive(username):
+    name = "My Drive C"
+    user = User.objects.get(username=username)
+    capacity = 5000000
+
+    drive = Drives.objects.create(drive_name=name, drive_user=user, capacity=capacity)
+
+    fname = "MyDesktop"
+    Folders.objects.create(name=fname, path=f"/{name}/MyDesktop/", drive_id=drive)
+
 
 def register(request):
     if request.method == "POST":
