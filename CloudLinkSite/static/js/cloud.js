@@ -76,3 +76,30 @@ function checkPassword() {
   }
 }
 
+// Function to check if an element is in the viewport
+function isElementInViewport(el) {
+    var rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Function to load more items when user scrolls
+function lazyLoad() {
+    var mediaItems = document.getElementsByClassName("media-item");
+
+    for (var i = 0; i < mediaItems.length; i++) {
+      if (isElementInViewport(mediaItems[i])) {
+        mediaItems[i].classList.add("loaded");
+      }
+    }
+}
+
+// Attach lazyLoad function to scroll event
+window.addEventListener("scroll", lazyLoad);
+
+// Load initial items
+lazyLoad();

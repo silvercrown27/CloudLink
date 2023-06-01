@@ -43,3 +43,11 @@
 .zoom:hover {
   transform: scale(1.5);
 }
+
+.media-item {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.media-item.loaded {
+    opacity: 1;
+}

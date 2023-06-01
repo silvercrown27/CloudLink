@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'mainsite.apps.MainsiteConfig',
     'usersite.apps.UsersiteConfig',
     'clearcache',
+    'imagekit',
+    'sorl.thumbnail',
+    'embed_video',
 ]
 
 
@@ -117,6 +120,20 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Dealing with thumbnails
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'thumbnail': {
+            'size': (500, 500),
+            'crop': True,
+        },
+    },
+}
+
+THUMBNAIL_FORCE_OVERWRITE = True
+
+# Thumbnails end
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
