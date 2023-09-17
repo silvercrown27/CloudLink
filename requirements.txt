@@ -1,0 +1,10 @@
+asgiref==3.7.2
+certifi==2023.7.22
+pytz==2023.3.post1
+requests==2.31.0
+six==1.16.0
+sorl-thumbnail==11.12
+sqlparse==0.4.4
+typing_extensions==4.7.1
+tzdata==2023.3
+urllib3==2.0.4

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'usersite.apps.UsersiteConfig',
     'clearcache',
     'imagekit',
-    'sorl.thumbnail',
     'embed_video',
 ]
 

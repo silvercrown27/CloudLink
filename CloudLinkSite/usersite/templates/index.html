@@ -8,7 +8,6 @@
     <!--    load static files -->
     {% load static %}
     {% load imagekit %}
-    {% load thumbnail %}
 
     <!-- Favicon -->
     <link href="{ % static 'img/favicon.ico' %}" rel="icon">
@@ -183,9 +182,8 @@
                   <div class="p-2 h-70 w-70 m-lg-3 d-flex justify-content-center">
                     <div class="container-fluid w-80" style="text-align: center;">
                       {% if ext in i_ext %}
-                        {% thumbnail file "500x500" as resized_image %}
-                          <img src="{{ resized_image.url }}" alt="image name" loading="lazy">
-                        {% endthumbnail %}
+                          <img src="/media/{{ file }}" alt="image name" loading="lazy">
+
                       {% elif ext in v_ext %}
                         <div class="video-container">
                           <video controls style="width: 650px">
